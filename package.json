@@ -1,0 +1,31 @@
+{
+  "name": "@based/pretty-workspaces",
+  "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atelier-saulx/pretty-string.git"
+  },
+  "keywords": [
+    "string",
+    "pretty",
+    "number",
+    "date",
+    "format",
+    "saulx",
+    "based"
+  ],
+  "scripts": {
+    "publish-all": "yarn workspaces run npm publish",
+    "force-publish-all": "yarn workspaces foreach npm publish --tolerate-republish"
+  },
+  "author": "Based",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atelier-saulx/pretty-string/issues"
+  },
+  "homepage": "https://github.com/atelier-saulx/pretty-string#readme"
+}
