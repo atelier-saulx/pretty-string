@@ -1,8 +1,8 @@
 # Pretty number
 
-> Small package to nicely format a numerical date to a human readable date.
+> Small package to nicely format a to a specific format, using a human-readable style.
 
-This package transform a numerical date into a human-readable format. There are several formats available.
+This package transform a numerical value to a specific format, including converting bytes to to kilobytes, and so on. 
 
 ## Install
 ```sh
@@ -12,7 +12,7 @@ $ npm i @based/pretty-number
 ## Usage 
 
 ```js
-import { prettyNumber } from '@based/pretty-date'
+import { prettyNumber } from '@based/pretty-number'
 
 let number = 500000 
 

@@ -1,13 +1,26 @@
 {
   "name": "@based/pretty-number",
+  "description": "Small package to nicely format a to a specific format, using a human-readable style.",
+  "keywords": [
+    "format",
+    "number",
+    "human",
+    "readable",
+    "human-readable",
+    "pretty",
+    "string"
+  ],
   "main": "./dist/index.js",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch"
   },
-  "repository": "https://github.com/atelier-saulx/pretty-string",
+  "repository": "https://github.com/atelier-saulx/pretty-string/tree/main/packages/prettyNumber",
+  "bugs": {
+    "url": "https://github.com/atelier-saulx/pretty-string/issues"
+  },
   "prettier": "@saulx/prettier-config",
   "eslintConfig": {
     "extends": "@saulx/eslint-config"

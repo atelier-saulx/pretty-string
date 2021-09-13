@@ -1,13 +1,26 @@
 {
   "name": "@based/pretty-date",
   "main": "./dist/index.js",
-  "version": "1.0.1",
+  "description": "Small package to nicely format a numerical date to a human readable date.",
+  "keywords": [
+    "date",
+    "human",
+    "readable",
+    "human-readable",
+    "string",
+    "pretty",
+    "format"
+  ],
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch"
   },
-  "repository": "https://github.com/atelier-saulx/pretty-string",
+  "repository": "https://github.com/atelier-saulx/pretty-string/tree/main/packages/prettyDate",
+  "bugs": {
+    "url": "https://github.com/atelier-saulx/pretty-string/issues"
+  },
   "prettier": "@saulx/prettier-config",
   "eslintConfig": {
     "extends": "@saulx/eslint-config"
