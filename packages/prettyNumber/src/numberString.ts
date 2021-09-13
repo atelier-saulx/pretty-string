@@ -41,11 +41,11 @@ const parseNumber = (nr: number | string, format: NumberFormat): string => {
       const mb = kb / 1024
       const gb = mb / 1024
 
-      if (gb > 1) {
+      if (gb >= 1) {
         return `${gb.toFixed(2)} gb`
-      } else if (mb > 1) {
+      } else if (mb >= 1) {
         return `${mb.toFixed(2)} mb`
-      } else if (kb > 1) {
+      } else if (kb >= 1) {
         return `${kb.toFixed(2)} kb`
       } else {
         return `${nr} ${nr === 1 ? 'byte' : 'bytes'}`

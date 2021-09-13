@@ -1,5 +1,6 @@
-import prettyNumber from './numberString'
+import prettyNumber, { NumberFormat } from './numberString'
 
 export {
-    prettyNumber
+    prettyNumber,
+    NumberFormat
 }
