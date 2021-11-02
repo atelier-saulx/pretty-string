@@ -18,75 +18,107 @@ const addZero = (d: number): string => {
 
 export default (nr: number | string, format: DateFormat = 'date'): string => {
   if (typeof nr === 'number') {
-    const d = new Date(nr)
+    const thenDate = new Date(nr)
     if (format === 'date') {
-      return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear()
+      return thenDate.getDate() + '/' + (thenDate.getMonth() + 1) + '/' + thenDate.getFullYear()
     } else if (format === 'time') {
-      return d.getHours() + ':' + addZero(d.getMinutes())
+      return thenDate.getHours() + ':' + addZero(thenDate.getMinutes())
     } else if (format === 'time-precise') {
       return (
-        d.getHours() +
+        thenDate.getHours() +
         ':' +
-        addZero(d.getMinutes()) +
+        addZero(thenDate.getMinutes()) +
         ':' +
-        addZero(d.getSeconds())
+        addZero(thenDate.getSeconds())
       )
     } else if (format === 'date-time-text') {
-      return `${d.toLocaleDateString('default', {
+      return `${thenDate.toLocaleDateString('default', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
-      })}, ${d.toLocaleTimeString()}`
+      })}, ${thenDate.toLocaleTimeString()}`
     } else if (format === 'date-time') {
       return (
-        d.getHours() +
+        thenDate.getHours() +
         ':' +
-        addZero(d.getMinutes()) +
+        addZero(thenDate.getMinutes()) +
         ' ' +
-        d.getDate() +
+        thenDate.getDate() +
         '/' +
-        (d.getMonth() + 1) +
+        (thenDate.getMonth() + 1) +
         '/' +
-        d.getFullYear()
+        thenDate.getFullYear()
       )
     } else if (format === 'date-time-human') {
-      const now = new Date()
+      const nowDate = new Date()
 
-      //
-      const timeTable = [
-        ['getFullYear', 'year', 'years'],
-        ['getMonth', 'month', 'months'],
-        ['getDate', 'day', 'days'],
-        ['getHours', 'hour', 'hours'],
-        ['getMinutes', 'minute', 'minutes'],
-        ['getSeconds', 'second', 'seconds'],
-      ]
+      if (nowDate.getTime() > thenDate.getTime()) {
 
-      if (now.getTime() > d.getTime()) {
-        for (let i = 0; i < timeTable.length; i++) {
-          const [m, single, plural] = timeTable[i]
-          // const lang = getLanguage()
-          const a = now[m]()
-          const b = d[m]()
-          if (a > b) {
-            const diff = a - b
-            return `${a - b} ${diff > 1 ? plural : single} ago`
-          }
+        var secondsSince = Math.floor((nowDate.getTime() - thenDate.getTime()) / 1000);
+
+        var interval = secondsSince / 31536000; // seconds in a year
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'years' : 'year'} ago`
         }
-
+        interval = secondsSince / 2592000; // seconds in a month
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'months' : 'month'} ago`
+        }
+        interval = secondsSince / 86400; // seconds in a day
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'days' : 'day'} ago`
+        }
+        interval = secondsSince / 3600; // seconds in an hour
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'hours' : 'hour'} ago`
+        }
+        interval = secondsSince / 60; // seconds in a minute :)
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'minutes' : 'minute'} ago`
+        }
+        if (secondsSince > 10){
+          const x = Math.floor(secondsSince)
+          return `${x} ${x > 1 ? 'seconds' : 'second'} ago`
+        }   
         return 'Now'
       } else {
-        for (let i = 0; i < timeTable.length; i++) {
-          const [m, single, plural] = timeTable[i]
-          // const lang = getLanguage()
-          const a = d[m]()
-          const b = now[m]()
-          if (a > b) {
-            const diff = a - b
-            return `${a - b} ${diff > 1 ? plural : single} from now`
-          }
-        }
         // in the future
+        var secondsSince = Math.floor((thenDate.getTime() - nowDate.getTime()) / 1000);
+
+        var interval = secondsSince / 31536000; // seconds in a year
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'years' : 'year'} from now`
+        }
+        interval = secondsSince / 2592000; // seconds in a month
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'months' : 'month'} from now`
+        }
+        interval = secondsSince / 86400; // seconds in a day
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'days' : 'day'} from now`
+        }
+        interval = secondsSince / 3600; // seconds in an hour
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'hours' : 'hour'} from now`
+        }
+        interval = secondsSince / 60; // seconds in a minute :)
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x} ${x > 1 ? 'minutes' : 'minute'} from now`
+        }
+        if (secondsSince > 10){
+          const x = Math.floor(secondsSince)
+          return `${x} ${x > 1 ? 'seconds' : 'second'} from now`
+        }   
         return 'Now'
       }
     }
