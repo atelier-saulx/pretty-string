@@ -8,10 +8,9 @@ export type NumberFormat =
   | 'number-euro'
   | 'number-dollar'
   | 'number-pound'
+  | `number-round-${number}`
 
 const parseNumber = (nr: number | string, format: NumberFormat): string => {
-  // if number === number-bytes
-  // if number === number-percentage
 
   if (typeof nr === 'number') {
     if (
@@ -36,7 +35,15 @@ const parseNumber = (nr: number | string, format: NumberFormat): string => {
           ? '$'
           : ''
       }${s}${f ? `${fraction}${f}` : ''}`
-    } else if (format === 'number-bytes') {
+    }
+    else if (format.startsWith('number-round-')) {
+      const [,fixed] = format.split('number-round-')
+      const n = Number(fixed)
+      if (!n) {
+        return `${nr.toFixed()}`
+      }
+      return `${nr.toFixed(n)}`
+    }  else if (format === 'number-bytes') {
       const kb = nr / 1024
       const mb = kb / 1024
       const gb = mb / 1024
