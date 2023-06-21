@@ -26,6 +26,6 @@
     "extends": "@saulx/eslint-config"
   },
   "devDependencies": {
-    "typescript": "^3.7.3"
+    "typescript": "^5.1.3"
   }
 }
