@@ -2,7 +2,11 @@
 # yarn lockfile v1
 
 
+"@based/pretty-number@file:/Users/jim/saulx/pretty-string/packages/prettyNumber":
+  version "1.1.0"
+  resolved "file:packages/prettyNumber"
+
 typescript@^3.7.3:
   version "3.9.10"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.10.tgz"
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
