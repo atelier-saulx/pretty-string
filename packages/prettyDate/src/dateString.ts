@@ -5,6 +5,7 @@ export type DateFormat =
   | 'date-time'
   | 'date-time-text'
   | 'date-time-human'
+  | 'date-time-human-short'
   | 'time'
   | 'time-precise'
 
@@ -118,6 +119,78 @@ export default (nr: number | string, format: DateFormat = 'date'): string => {
         if (secondsSince > 10){
           const x = Math.floor(secondsSince)
           return `${x} ${x > 1 ? 'seconds' : 'second'} from now`
+        }   
+        return 'Now'
+      }
+    } else if (format === 'date-time-human-short') {
+      const nowDate = new Date()
+
+      if (nowDate.getTime() > thenDate.getTime()) {
+
+        var secondsSince = Math.floor((nowDate.getTime() - thenDate.getTime()) / 1000);
+
+        var interval = secondsSince / 31536000; // seconds in a year
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}y ago`
+        }
+        interval = secondsSince / 2592000; // seconds in a month
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}m ago`
+        }
+        interval = secondsSince / 86400; // seconds in a day
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}d ago`
+        }
+        interval = secondsSince / 3600; // seconds in an hour
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}s ago`
+        }
+        interval = secondsSince / 60; // seconds in a minute :)
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}m ago`
+        }
+        if (secondsSince > 10){
+          const x = Math.floor(secondsSince)
+          return `${x}s ago`
+        }   
+        return 'Now'
+      } else {
+        // in the future
+        var secondsSince = Math.floor((thenDate.getTime() - nowDate.getTime()) / 1000);
+
+        var interval = secondsSince / 31536000; // seconds in a year
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}y from now`
+        }
+        interval = secondsSince / 2592000; // seconds in a month
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}m from now`
+        }
+        interval = secondsSince / 86400; // seconds in a day
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}d from now`
+        }
+        interval = secondsSince / 3600; // seconds in an hour
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}h from now`
+        }
+        interval = secondsSince / 60; // seconds in a minute :)
+        if (interval > 1) {
+          const x = Math.floor(interval)
+          return `${x}m from now`
+        }
+        if (secondsSince > 10){
+          const x = Math.floor(secondsSince)
+          return `${x}s from now`
         }   
         return 'Now'
       }
