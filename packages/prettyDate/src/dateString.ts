@@ -166,31 +166,31 @@ export default (nr: number | string, format: DateFormat = 'date'): string => {
         var interval = secondsSince / 31536000; // seconds in a year
         if (interval > 1) {
           const x = Math.floor(interval)
-          return `${x}y from now`
+          return `in ${x}y`
         }
         interval = secondsSince / 2592000; // seconds in a month
         if (interval > 1) {
           const x = Math.floor(interval)
-          return `${x}m from now`
+          return `in ${x}m`
         }
         interval = secondsSince / 86400; // seconds in a day
         if (interval > 1) {
           const x = Math.floor(interval)
-          return `${x}d from now`
+          return `in ${x}d`
         }
         interval = secondsSince / 3600; // seconds in an hour
         if (interval > 1) {
           const x = Math.floor(interval)
-          return `${x}h from now`
+          return `in ${x}h`
         }
         interval = secondsSince / 60; // seconds in a minute :)
         if (interval > 1) {
           const x = Math.floor(interval)
-          return `${x}m from now`
+          return `in ${x}m`
         }
         if (secondsSince > 10){
           const x = Math.floor(secondsSince)
-          return `${x}s from now`
+          return `in ${x}s`
         }   
         return 'Now'
       }
