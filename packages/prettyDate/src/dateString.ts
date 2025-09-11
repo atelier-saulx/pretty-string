@@ -137,7 +137,7 @@ export default (nr: number | string, format: DateFormat = 'date'): string => {
         interval = secondsSince / 2592000; // seconds in a month
         if (interval > 1) {
           const x = Math.floor(interval)
-          return `${x}m ago`
+          return `${x}mo ago`
         }
         interval = secondsSince / 86400; // seconds in a day
         if (interval > 1) {
